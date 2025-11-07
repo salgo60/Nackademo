@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7172f163cc81c943a3aff76c86146fde {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 20px; left: 20px; width: 230px; z-index:9999; font-size:14px;
+     background: white; padding: 12px 14px; border: 1px solid #ccc; border-radius: 8px;">
+  <div style="font-weight:600; margin-bottom:6px;">15-minutersstaden – Nacka (Demo)</div>
+  <div>Antagande: gångfart 4.5 km/h (≈75 m/min). Cirklar är <i>euklidiska</i> och tar inte hänsyn till barriärer eller vägnät.</div>
+  <div style="margin-top:8px;">
+    <div><span style="background:#b3e5fc; width:12px; height:12px; display:inline-block; margin-right:8px;"></span>5 min (~375 m)</div>
+    <div><span style="background:#4fc3f7; width:12px; height:12px; display:inline-block; margin-right:8px;"></span>10 min (~750 m)</div>
+    <div><span style="background:#0288d1; width:12px; height:12px; display:inline-block; margin-right:8px;"></span>15 min (~1125 m)</div>
+  </div>
+  <div style="margin-top:8px; font-size:12px; color:#444;">
+    Tips: Ersätt cirklar med nätverksisochroner (OpenRouteService/OSMnx) för verklig gångtid.
+  </div>
+</div>
+    
+            <div class="folium-map" id="map_7172f163cc81c943a3aff76c86146fde" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7172f163cc81c943a3aff76c86146fde = L.map(
+                "map_7172f163cc81c943a3aff76c86146fde",
+                {
+                    center: [59.31, 18.164],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_7172f163cc81c943a3aff76c86146fde);
+
+            
+
+        
+    
+            var tile_layer_8af1c4ade8adb75e3cb156ed77b2d946 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_7172f163cc81c943a3aff76c86146fde);
+        
+    
+            var feature_group_788f9c9363420e635a9be37b63ac8b6b = L.featureGroup(
+                {}
+            ).addTo(map_7172f163cc81c943a3aff76c86146fde);
+        
+    
+            var marker_27a78f70f93746d351f2ae31256f17b4 = L.marker(
+                [59.3079, 18.1216],
+                {}
+            ).addTo(feature_group_788f9c9363420e635a9be37b63ac8b6b);
+        
+    
+            var icon_3b25fcd893f9f1bec07031aa2874d952 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "walk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_27a78f70f93746d351f2ae31256f17b4.setIcon(icon_3b25fcd893f9f1bec07031aa2874d952);
+        
+    
+        var popup_2cea9328ef108daa71a5bfc04ce45c5a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f635a6eb27106abdd8149c2f2b136d33 = $(`<div id="html_f635a6eb27106abdd8149c2f2b136d33" style="width: 100.0%; height: 100.0%;"><b>Sickla Köpkvarter</b><br>Illustrativa gång-isochroner (5/10/15 min)</div>`)[0];
+            popup_2cea9328ef108daa71a5bfc04ce45c5a.setContent(html_f635a6eb27106abdd8149c2f2b136d33);
+        
+
+        marker_27a78f70f93746d351f2ae31256f17b4.bindPopup(popup_2cea9328ef108daa71a5bfc04ce45c5a)
+        ;
+
+        
+    
+    
+            marker_27a78f70f93746d351f2ae31256f17b4.bindTooltip(
+                `<div>
+                     Sickla Köpkvarter
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_0867833516d6fe4fd4f17ec95d3d4600 = L.circle(
+                [59.3079, 18.1216],
+                {"bubblingMouseEvents": true, "color": "#b3e5fc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b3e5fc", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 375, "stroke": true, "weight": 2}
+            ).addTo(feature_group_788f9c9363420e635a9be37b63ac8b6b);
+        
+    
+        var popup_0c547f5b7531300bab9716eca2fa4386 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9f6259872c67c12f776f431f335445d4 = $(`<div id="html_9f6259872c67c12f776f431f335445d4" style="width: 100.0%; height: 100.0%;">5 min gång (~375 m)</div>`)[0];
+            popup_0c547f5b7531300bab9716eca2fa4386.setContent(html_9f6259872c67c12f776f431f335445d4);
+        
+
+        circle_0867833516d6fe4fd4f17ec95d3d4600.bindPopup(popup_0c547f5b7531300bab9716eca2fa4386)
+        ;
+
+        
+    
+    
+            var circle_d0fcfdf6f274a7e09bd38abb02f244d4 = L.circle(
+                [59.3079, 18.1216],
+                {"bubblingMouseEvents": true, "color": "#4fc3f7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4fc3f7", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 750, "stroke": true, "weight": 2}
+            ).addTo(feature_group_788f9c9363420e635a9be37b63ac8b6b);
+        
+    
+        var popup_515b4ad382755a07be4ac5dbca7f030f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bde2931d86de6d815d82eeb5941dae4a = $(`<div id="html_bde2931d86de6d815d82eeb5941dae4a" style="width: 100.0%; height: 100.0%;">10 min gång (~750 m)</div>`)[0];
+            popup_515b4ad382755a07be4ac5dbca7f030f.setContent(html_bde2931d86de6d815d82eeb5941dae4a);
+        
+
+        circle_d0fcfdf6f274a7e09bd38abb02f244d4.bindPopup(popup_515b4ad382755a07be4ac5dbca7f030f)
+        ;
+
+        
+    
+    
+            var circle_6b9f540501459f45876f4335c9ca2c06 = L.circle(
+                [59.3079, 18.1216],
+                {"bubblingMouseEvents": true, "color": "#0288d1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0288d1", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1125, "stroke": true, "weight": 2}
+            ).addTo(feature_group_788f9c9363420e635a9be37b63ac8b6b);
+        
+    
+        var popup_6900cf47ad1033e24022e8d0492d142b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5203c20b7f82afa44b84b90cca329e38 = $(`<div id="html_5203c20b7f82afa44b84b90cca329e38" style="width: 100.0%; height: 100.0%;">15 min gång (~1125 m)</div>`)[0];
+            popup_6900cf47ad1033e24022e8d0492d142b.setContent(html_5203c20b7f82afa44b84b90cca329e38);
+        
+
+        circle_6b9f540501459f45876f4335c9ca2c06.bindPopup(popup_6900cf47ad1033e24022e8d0492d142b)
+        ;
+
+        
+    
+    
+            var feature_group_16db2a2118051e98950462f6c62af7e9 = L.featureGroup(
+                {}
+            ).addTo(map_7172f163cc81c943a3aff76c86146fde);
+        
+    
+            var marker_6f563373b8d7952148556b2f72baf8a8 = L.marker(
+                [59.3107, 18.1641],
+                {}
+            ).addTo(feature_group_16db2a2118051e98950462f6c62af7e9);
+        
+    
+            var icon_77a68ced604497c4cc0a5c2e81887aef = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "walk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6f563373b8d7952148556b2f72baf8a8.setIcon(icon_77a68ced604497c4cc0a5c2e81887aef);
+        
+    
+        var popup_3617a24e618de8b7c440e8e3313ae57b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_565bb273a10eb00bece133fd9f8d4613 = $(`<div id="html_565bb273a10eb00bece133fd9f8d4613" style="width: 100.0%; height: 100.0%;"><b>Nacka Forum</b><br>Illustrativa gång-isochroner (5/10/15 min)</div>`)[0];
+            popup_3617a24e618de8b7c440e8e3313ae57b.setContent(html_565bb273a10eb00bece133fd9f8d4613);
+        
+
+        marker_6f563373b8d7952148556b2f72baf8a8.bindPopup(popup_3617a24e618de8b7c440e8e3313ae57b)
+        ;
+
+        
+    
+    
+            marker_6f563373b8d7952148556b2f72baf8a8.bindTooltip(
+                `<div>
+                     Nacka Forum
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_031ba757e49de8c34b8a21fb78cfe558 = L.circle(
+                [59.3107, 18.1641],
+                {"bubblingMouseEvents": true, "color": "#b3e5fc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b3e5fc", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 375, "stroke": true, "weight": 2}
+            ).addTo(feature_group_16db2a2118051e98950462f6c62af7e9);
+        
+    
+        var popup_b4188abe9be56145f7ad68e8ee10e51a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8c3e7b355a368d42af8e508cbdeafbd8 = $(`<div id="html_8c3e7b355a368d42af8e508cbdeafbd8" style="width: 100.0%; height: 100.0%;">5 min gång (~375 m)</div>`)[0];
+            popup_b4188abe9be56145f7ad68e8ee10e51a.setContent(html_8c3e7b355a368d42af8e508cbdeafbd8);
+        
+
+        circle_031ba757e49de8c34b8a21fb78cfe558.bindPopup(popup_b4188abe9be56145f7ad68e8ee10e51a)
+        ;
+
+        
+    
+    
+            var circle_7ca6091bef9b57a11cdd6db8bd55b134 = L.circle(
+                [59.3107, 18.1641],
+                {"bubblingMouseEvents": true, "color": "#4fc3f7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4fc3f7", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 750, "stroke": true, "weight": 2}
+            ).addTo(feature_group_16db2a2118051e98950462f6c62af7e9);
+        
+    
+        var popup_3529db1b83184d46781d5fcdc540d4f1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8b8c36b79d63896c320ddf7cb8a0ab93 = $(`<div id="html_8b8c36b79d63896c320ddf7cb8a0ab93" style="width: 100.0%; height: 100.0%;">10 min gång (~750 m)</div>`)[0];
+            popup_3529db1b83184d46781d5fcdc540d4f1.setContent(html_8b8c36b79d63896c320ddf7cb8a0ab93);
+        
+
+        circle_7ca6091bef9b57a11cdd6db8bd55b134.bindPopup(popup_3529db1b83184d46781d5fcdc540d4f1)
+        ;
+
+        
+    
+    
+            var circle_ba64fe9422e6a606bd80bb430cda6ed7 = L.circle(
+                [59.3107, 18.1641],
+                {"bubblingMouseEvents": true, "color": "#0288d1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0288d1", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1125, "stroke": true, "weight": 2}
+            ).addTo(feature_group_16db2a2118051e98950462f6c62af7e9);
+        
+    
+        var popup_50e9905807016cf1ed8e585ebcfb0fcb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_043d8c1c5c04a3dab882242bc8352f89 = $(`<div id="html_043d8c1c5c04a3dab882242bc8352f89" style="width: 100.0%; height: 100.0%;">15 min gång (~1125 m)</div>`)[0];
+            popup_50e9905807016cf1ed8e585ebcfb0fcb.setContent(html_043d8c1c5c04a3dab882242bc8352f89);
+        
+
+        circle_ba64fe9422e6a606bd80bb430cda6ed7.bindPopup(popup_50e9905807016cf1ed8e585ebcfb0fcb)
+        ;
+
+        
+    
+    
+            var feature_group_7a2be3498436db3ae24dc1af91ef85bc = L.featureGroup(
+                {}
+            ).addTo(map_7172f163cc81c943a3aff76c86146fde);
+        
+    
+            var marker_acafc42f1ec1e28ff4651aab395f9fa1 = L.marker(
+                [59.3218, 18.2654],
+                {}
+            ).addTo(feature_group_7a2be3498436db3ae24dc1af91ef85bc);
+        
+    
+            var icon_032705ff87f1e223e268b414905886a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "walk", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_acafc42f1ec1e28ff4651aab395f9fa1.setIcon(icon_032705ff87f1e223e268b414905886a7);
+        
+    
+        var popup_2b23db2e1a1aa3c2c642f32860899984 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_37fb2fbcb12e4ad4e6afc77bd7917299 = $(`<div id="html_37fb2fbcb12e4ad4e6afc77bd7917299" style="width: 100.0%; height: 100.0%;"><b>Orminge centrum</b><br>Illustrativa gång-isochroner (5/10/15 min)</div>`)[0];
+            popup_2b23db2e1a1aa3c2c642f32860899984.setContent(html_37fb2fbcb12e4ad4e6afc77bd7917299);
+        
+
+        marker_acafc42f1ec1e28ff4651aab395f9fa1.bindPopup(popup_2b23db2e1a1aa3c2c642f32860899984)
+        ;
+
+        
+    
+    
+            marker_acafc42f1ec1e28ff4651aab395f9fa1.bindTooltip(
+                `<div>
+                     Orminge centrum
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_77511f4777507ee42ad5d94ccf50cd11 = L.circle(
+                [59.3218, 18.2654],
+                {"bubblingMouseEvents": true, "color": "#b3e5fc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b3e5fc", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 375, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7a2be3498436db3ae24dc1af91ef85bc);
+        
+    
+        var popup_8ee81c8f1e133f3f5d820459e0bef3cb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2ba9c1215b4f471afe13e031e2493fae = $(`<div id="html_2ba9c1215b4f471afe13e031e2493fae" style="width: 100.0%; height: 100.0%;">5 min gång (~375 m)</div>`)[0];
+            popup_8ee81c8f1e133f3f5d820459e0bef3cb.setContent(html_2ba9c1215b4f471afe13e031e2493fae);
+        
+
+        circle_77511f4777507ee42ad5d94ccf50cd11.bindPopup(popup_8ee81c8f1e133f3f5d820459e0bef3cb)
+        ;
+
+        
+    
+    
+            var circle_6f84ff6b16f797c3e29e69506aa80121 = L.circle(
+                [59.3218, 18.2654],
+                {"bubblingMouseEvents": true, "color": "#4fc3f7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4fc3f7", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 750, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7a2be3498436db3ae24dc1af91ef85bc);
+        
+    
+        var popup_a3428b482e189dfcb2c7809eca34253e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f99f68c07493be8f9163b574615f18e2 = $(`<div id="html_f99f68c07493be8f9163b574615f18e2" style="width: 100.0%; height: 100.0%;">10 min gång (~750 m)</div>`)[0];
+            popup_a3428b482e189dfcb2c7809eca34253e.setContent(html_f99f68c07493be8f9163b574615f18e2);
+        
+
+        circle_6f84ff6b16f797c3e29e69506aa80121.bindPopup(popup_a3428b482e189dfcb2c7809eca34253e)
+        ;
+
+        
+    
+    
+            var circle_0d3ae2c705188aedf31a8a8824e5a397 = L.circle(
+                [59.3218, 18.2654],
+                {"bubblingMouseEvents": true, "color": "#0288d1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0288d1", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1125, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7a2be3498436db3ae24dc1af91ef85bc);
+        
+    
+        var popup_8c6413692701016ce3658a6391c6d6e4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2876b6c045c737a5eb14094840c1664d = $(`<div id="html_2876b6c045c737a5eb14094840c1664d" style="width: 100.0%; height: 100.0%;">15 min gång (~1125 m)</div>`)[0];
+            popup_8c6413692701016ce3658a6391c6d6e4.setContent(html_2876b6c045c737a5eb14094840c1664d);
+        
+
+        circle_0d3ae2c705188aedf31a8a8824e5a397.bindPopup(popup_8c6413692701016ce3658a6391c6d6e4)
+        ;
+
+        
+    
+    
+            var layer_control_83dc6ce453106737ab9feac74444d15a = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_8af1c4ade8adb75e3cb156ed77b2d946,
+                },
+                overlays :  {
+                    "Sickla K\u00f6pkvarter \u2013 g\u00e5ngavst\u00e5nd" : feature_group_788f9c9363420e635a9be37b63ac8b6b,
+                    "Nacka Forum \u2013 g\u00e5ngavst\u00e5nd" : feature_group_16db2a2118051e98950462f6c62af7e9,
+                    "Orminge centrum \u2013 g\u00e5ngavst\u00e5nd" : feature_group_7a2be3498436db3ae24dc1af91ef85bc,
+                },
+            };
+            L.control.layers(
+                layer_control_83dc6ce453106737ab9feac74444d15a.base_layers,
+                layer_control_83dc6ce453106737ab9feac74444d15a.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_7172f163cc81c943a3aff76c86146fde);
+        
+</script>
+</html>
